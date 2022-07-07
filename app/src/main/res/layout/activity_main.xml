@@ -7,12 +7,37 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/main_activity_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="MainActivity"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/data_structure_activity_jump_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="数据结构"
+        android:padding="10dp"
+        android:background="@color/purple_200"
+        app:layout_constraintTop_toBottomOf="@id/main_activity_name_tv"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/handler_test_activity_jump_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Handler测试"
+        android:padding="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/purple_200"
+        app:layout_constraintTop_toBottomOf="@id/main_activity_name_tv"
+        app:layout_constraintLeft_toRightOf="@id/data_structure_activity_jump_tv" />
 </androidx.constraintlayout.widget.ConstraintLayout>
