@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (view == dataStructureTv) {
             JumpUtils.getInstance().jumpToDataStructureTestActivity(this);
         }   else if (view == handlerTestTv) {
-            JumpUtils.getInstance().jumpToHandlerTestActivity();
+            JumpUtils.getInstance().jumpToHandlerTestActivity(this);
         }
     }
 }
