@@ -28,6 +28,8 @@ public class DataStructureTestActivity extends AppCompatActivity implements View
         //testBinarySearch();
         //测试栈
         testMyStack();
+        //测试队列
+        testMyQueue();
     }
 
 
@@ -86,6 +88,14 @@ public class DataStructureTestActivity extends AppCompatActivity implements View
         myStack.push(2);
         myStack.push(3);
         myStack.pop();
+    }
+
+    private void testMyQueue() {
+        MyQueue myQueue = new MyQueue();
+        myQueue.add(9);
+        myQueue.add(8);
+        myQueue.add(7);
+        Log.d("jingyidebug", "" + myQueue.poll());
     }
 
     @Override
