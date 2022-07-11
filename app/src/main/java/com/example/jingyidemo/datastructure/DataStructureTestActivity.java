@@ -27,10 +27,14 @@ public class DataStructureTestActivity extends AppCompatActivity implements View
         //测试二分查找
         //testBinarySearch();
         //测试栈
-        testMyStack();
+        //testMyStack();
         //测试队列
-        testMyQueue();
+        //testMyQueue();
+
+        //测试链表
+        testLinkedList();
     }
+
 
 
 
@@ -96,6 +100,27 @@ public class DataStructureTestActivity extends AppCompatActivity implements View
         myQueue.add(8);
         myQueue.add(7);
         Log.d("jingyidebug", "" + myQueue.poll());
+    }
+
+
+    private void testLinkedList() {
+        //创建节点
+        Node node1 = new Node(1);
+        Node node2 = new Node(2);
+        Node node3 = new Node(3);
+        //链接起来
+        node1.append(node2).append(node3).append(new Node(4));
+        //显示所有节点
+        node1.show();
+        //删除node3,需要在node3前一个节点调用removeNext
+        node1.next().removeNext();
+        //显示所有节点
+        node1.show();
+        //插入一个新节点1254
+        Node node = new Node(5);
+        node1.next().after(node);
+        //显示所有节点
+        node1.show();
     }
 
     @Override
