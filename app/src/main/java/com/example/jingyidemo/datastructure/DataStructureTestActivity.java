@@ -26,7 +26,11 @@ public class DataStructureTestActivity extends AppCompatActivity implements View
         //testMyArray();
         //测试二分查找
         //testBinarySearch();
+        //测试栈
+        testMyStack();
     }
+
+
 
     private void findViews() {
         backTv = findViewById(R.id.act_data_structure_back_tv);
@@ -74,6 +78,14 @@ public class DataStructureTestActivity extends AppCompatActivity implements View
             }
         }
         Log.d("jingyidebug", "binarySearch result = " + result);
+    }
+
+    private void testMyStack() {
+        MyStack myStack = new MyStack();
+        myStack.push(1);
+        myStack.push(2);
+        myStack.push(3);
+        myStack.pop();
     }
 
     @Override
