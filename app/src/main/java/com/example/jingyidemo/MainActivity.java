@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView dataStructureTv;
     private TextView handlerTestTv;
+    private TextView fragmentTestTv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +29,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void findViews() {
         dataStructureTv = findViewById(R.id.data_structure_activity_jump_tv);
         handlerTestTv = findViewById(R.id.handler_test_activity_jump_tv);
+        fragmentTestTv = findViewById(R.id.fragment_test_activity_jump_tv);
     }
 
     private void initListener() {
         dataStructureTv.setOnClickListener(this);
         handlerTestTv.setOnClickListener(this);
+        fragmentTestTv.setOnClickListener(this);
     }
 
     @Override
@@ -40,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             JumpUtils.getInstance().jumpToDataStructureTestActivity(this);
         }   else if (view == handlerTestTv) {
             JumpUtils.getInstance().jumpToHandlerTestActivity(this);
+        } else if (view == fragmentTestTv) {
+            JumpUtils.getInstance().jumpToFragmentTestActivity(this);
         }
     }
 }

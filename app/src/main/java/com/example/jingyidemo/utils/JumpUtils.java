@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import com.example.jingyidemo.MainActivity;
 import com.example.jingyidemo.datastructure.DataStructureTestActivity;
+import com.example.jingyidemo.fragmenttest.FragmentTestActivity;
 import com.example.jingyidemo.handlertest.HandlerTestActivity;
 
 /**
@@ -33,6 +34,11 @@ public class JumpUtils {
 
     public void jumpToHandlerTestActivity(Activity activity) {
         Intent intent = new Intent(activity , HandlerTestActivity.class);
+        activity.startActivity(intent);
+    }
+
+    public void jumpToFragmentTestActivity(Activity activity) {
+        Intent intent = new Intent(activity , FragmentTestActivity.class);
         activity.startActivity(intent);
     }
 }
