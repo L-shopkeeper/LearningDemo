@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import com.example.jingyidemo.R;
 
-import java.nio.file.LinkPermission;
-
 public class DataStructureTestActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String LOG_TAG = "jingyidebug";
@@ -41,8 +39,52 @@ public class DataStructureTestActivity extends AppCompatActivity implements View
 //        testLoopNode();
         
         //测试双向链表
-        testDoubleNode();
+//        testDoubleNode();
 
+        //递归-测试斐波那契数列
+        testFibonacci();
+
+        //递归-测试汉诺塔问题
+        testHanoi();
+
+    }
+
+    private void testHanoi() {
+        //  |   |   |
+        //  |   |   |
+        //  -   -   -
+        //  A   B   C
+        hanoi(3, 'A', 'B', 'C');
+    }
+
+    private void hanoi(int n, char from, char in, char to) {
+        //只有一个盘子
+        if (n == 1) {
+            //移动这个盘子
+            Log.d(LOG_TAG, "第" + n + "个盘从" + from + "移动到" + to);
+        } else {
+            //无论有多少盘子，都认为只有两个。上面的盘子和最下面的盘子。
+            //先把上面的盘子都移动到中间
+            hanoi(n - 1, from, to, in);
+            //移动最下面的盘子
+            Log.d(LOG_TAG, "第" + n + "个盘从" + from + "移动到" + to);
+            //把暂时放到中间的盘子移动到目的地
+            hanoi(n - 1, in, from, to);
+        }
+    }
+
+    private void testFibonacci() {
+        //Fibonacci数列：1 1 2 3 5 8 13 21 ...
+        //打印第n项
+        Log.d(LOG_TAG, "" + getFibonacci(8));
+    }
+
+    private int getFibonacci(int i) {
+        if(i == 1 || i == 2) {
+            return 1;
+        } else {
+            return getFibonacci(i - 1) + getFibonacci(i - 2);
+        }
     }
 
     private void testDoubleNode() {
