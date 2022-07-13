@@ -9,8 +9,11 @@ import android.widget.TextView;
 
 import com.example.jingyidemo.R;
 
+import java.nio.file.LinkPermission;
+
 public class DataStructureTestActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String LOG_TAG = "jingyidebug";
      private TextView backTv;
 
     @Override
@@ -32,10 +35,28 @@ public class DataStructureTestActivity extends AppCompatActivity implements View
         //testMyQueue();
 
         //测试链表
-        testLinkedList();
+//        testLinkedList();
+
+        //测试循环链表
+        testLoopNode();
     }
 
+    private void testLoopNode() {
+        LoopNode n1 = new LoopNode(1);
+        LoopNode n2 = new LoopNode(2);
+        LoopNode n3 = new LoopNode(3);
+        LoopNode n4 = new LoopNode(4);
+        //追加节点
+        n1.after(n2);
+        n2.after(n3);
+        n3.after(n4);
+        //输出
+        Log.d(LOG_TAG, "" + n1.next().getData());
+        Log.d(LOG_TAG, "" + n2.next().getData());
+        Log.d(LOG_TAG, "" + n3.next().getData());
+        Log.d(LOG_TAG, "" + n4.next().getData());
 
+    }
 
 
     private void findViews() {
