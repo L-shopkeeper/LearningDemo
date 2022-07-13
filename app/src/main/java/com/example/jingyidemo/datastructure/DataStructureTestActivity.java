@@ -38,7 +38,26 @@ public class DataStructureTestActivity extends AppCompatActivity implements View
 //        testLinkedList();
 
         //测试循环链表
-        testLoopNode();
+//        testLoopNode();
+        
+        //测试双向链表
+        testDoubleNode();
+
+    }
+
+    private void testDoubleNode() {
+        //创建节点
+        DoubleNode n1 = new DoubleNode(1);
+        DoubleNode n2 = new DoubleNode(2);
+        DoubleNode n3 = new DoubleNode(3);
+        //追加节点
+        n1.after(n2);
+        n2.after(n3);
+        //查看 3 3 1
+        Log.d(LOG_TAG, "" + n1.pre().getData());
+        Log.d(LOG_TAG, "" + n2.next().getData());
+        Log.d(LOG_TAG, "" + n3.next().getData());
+
     }
 
     private void testLoopNode() {
