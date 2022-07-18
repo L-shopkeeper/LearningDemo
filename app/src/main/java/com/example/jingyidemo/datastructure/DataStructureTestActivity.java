@@ -7,11 +7,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.jingyidemo.MainActivity;
 import com.example.jingyidemo.R;
 
 public class DataStructureTestActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String LOG_TAG = "jingyidebug";
      private TextView backTv;
 
     @Override
@@ -61,13 +61,13 @@ public class DataStructureTestActivity extends AppCompatActivity implements View
         //只有一个盘子
         if (n == 1) {
             //移动这个盘子
-            Log.d(LOG_TAG, "第" + n + "个盘从" + from + "移动到" + to);
+            Log.d(MainActivity.LOG_TAG, "第" + n + "个盘从" + from + "移动到" + to);
         } else {
             //无论有多少盘子，都认为只有两个。上面的盘子和最下面的盘子。
             //先把上面的盘子都移动到中间
             hanoi(n - 1, from, to, in);
             //移动最下面的盘子
-            Log.d(LOG_TAG, "第" + n + "个盘从" + from + "移动到" + to);
+            Log.d(MainActivity.LOG_TAG, "第" + n + "个盘从" + from + "移动到" + to);
             //把暂时放到中间的盘子移动到目的地
             hanoi(n - 1, in, from, to);
         }
@@ -76,7 +76,7 @@ public class DataStructureTestActivity extends AppCompatActivity implements View
     private void testFibonacci() {
         //Fibonacci数列：1 1 2 3 5 8 13 21 ...
         //打印第n项
-        Log.d(LOG_TAG, "" + getFibonacci(8));
+        Log.d(MainActivity.LOG_TAG, "" + getFibonacci(8));
     }
 
     private int getFibonacci(int i) {
@@ -96,9 +96,9 @@ public class DataStructureTestActivity extends AppCompatActivity implements View
         n1.after(n2);
         n2.after(n3);
         //查看 3 3 1
-        Log.d(LOG_TAG, "" + n1.pre().getData());
-        Log.d(LOG_TAG, "" + n2.next().getData());
-        Log.d(LOG_TAG, "" + n3.next().getData());
+        Log.d(MainActivity.LOG_TAG, "" + n1.pre().getData());
+        Log.d(MainActivity.LOG_TAG, "" + n2.next().getData());
+        Log.d(MainActivity.LOG_TAG, "" + n3.next().getData());
 
     }
 
@@ -112,10 +112,10 @@ public class DataStructureTestActivity extends AppCompatActivity implements View
         n2.after(n3);
         n3.after(n4);
         //输出
-        Log.d(LOG_TAG, "" + n1.next().getData());
-        Log.d(LOG_TAG, "" + n2.next().getData());
-        Log.d(LOG_TAG, "" + n3.next().getData());
-        Log.d(LOG_TAG, "" + n4.next().getData());
+        Log.d(MainActivity.LOG_TAG, "" + n1.next().getData());
+        Log.d(MainActivity.LOG_TAG, "" + n2.next().getData());
+        Log.d(MainActivity.LOG_TAG, "" + n3.next().getData());
+        Log.d(MainActivity.LOG_TAG, "" + n4.next().getData());
 
     }
 
@@ -133,7 +133,7 @@ public class DataStructureTestActivity extends AppCompatActivity implements View
         array.add(1);
         array.add(2);
         array.show();
-        Log.d("jingyidebug", "binarySearch result = " + array.binarySearch(2));
+        Log.d(MainActivity.LOG_TAG, "binarySearch result = " + array.binarySearch(2));
     }
 
     private void testBinarySearch() {
@@ -165,7 +165,7 @@ public class DataStructureTestActivity extends AppCompatActivity implements View
                 mid = (start + end) / 2;
             }
         }
-        Log.d("jingyidebug", "binarySearch result = " + result);
+        Log.d(MainActivity.LOG_TAG, "binarySearch result = " + result);
     }
 
     private void testMyStack() {
@@ -181,7 +181,7 @@ public class DataStructureTestActivity extends AppCompatActivity implements View
         myQueue.add(9);
         myQueue.add(8);
         myQueue.add(7);
-        Log.d("jingyidebug", "" + myQueue.poll());
+        Log.d(MainActivity.LOG_TAG, "" + myQueue.poll());
     }
 
 

@@ -53,5 +53,15 @@
         app:layout_constraintTop_toBottomOf="@id/main_activity_name_tv"
         app:layout_constraintLeft_toRightOf="@id/handler_test_activity_jump_tv" />
 
-
+    <TextView
+        android:id="@+id/sort_algorithm_activity_jump_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="排序算法"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/purple_200"
+        app:layout_constraintTop_toBottomOf="@id/data_structure_activity_jump_tv"
+        app:layout_constraintLeft_toLeftOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

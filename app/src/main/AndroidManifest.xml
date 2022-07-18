@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JingyiDemo">
-        <activity android:name=".fragmenttest.FragmentTestActivity"></activity>
+        <activity android:name=".sortalgorithm.SortAlgorithmActivity"></activity>
+        <activity android:name=".fragmenttest.FragmentTestActivity" />
         <activity android:name=".handlertest.HandlerSecondActivity" />
         <activity android:name=".handlertest.HandlerTestActivity" />
         <activity android:name=".datastructure.DataStructureTestActivity" />

@@ -12,9 +12,11 @@ import com.example.jingyidemo.utils.JumpUtils;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public static final String LOG_TAG = "jingyidebug";
     private TextView dataStructureTv;
     private TextView handlerTestTv;
     private TextView fragmentTestTv;
+    private TextView sortAlgorithmTv;
 
 
     @Override
@@ -30,12 +32,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dataStructureTv = findViewById(R.id.data_structure_activity_jump_tv);
         handlerTestTv = findViewById(R.id.handler_test_activity_jump_tv);
         fragmentTestTv = findViewById(R.id.fragment_test_activity_jump_tv);
+        sortAlgorithmTv = findViewById(R.id.sort_algorithm_activity_jump_tv);
     }
 
     private void initListener() {
         dataStructureTv.setOnClickListener(this);
         handlerTestTv.setOnClickListener(this);
         fragmentTestTv.setOnClickListener(this);
+        sortAlgorithmTv.setOnClickListener(this);
     }
 
     @Override
@@ -46,6 +50,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             JumpUtils.getInstance().jumpToHandlerTestActivity(this);
         } else if (view == fragmentTestTv) {
             JumpUtils.getInstance().jumpToFragmentTestActivity(this);
+        } else if (view == sortAlgorithmTv) {
+            JumpUtils.getInstance().jumpToSortAlgorithmActivity(this);
         }
     }
 }

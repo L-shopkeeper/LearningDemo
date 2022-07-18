@@ -7,6 +7,7 @@ import com.example.jingyidemo.MainActivity;
 import com.example.jingyidemo.datastructure.DataStructureTestActivity;
 import com.example.jingyidemo.fragmenttest.FragmentTestActivity;
 import com.example.jingyidemo.handlertest.HandlerTestActivity;
+import com.example.jingyidemo.sortalgorithm.SortAlgorithmActivity;
 
 /**
  * 界面跳转工具类
@@ -15,6 +16,13 @@ public class JumpUtils {
 
     private static JumpUtils jumpUtils;
 
+
+    /**
+     * DCL:双重检查
+     * advantage
+     * 1. 懒汉式：调用时才会初始化
+     * 2.解决了懒汉式每次调用都会消耗线程同步的资源synchroized
+     */
     public static JumpUtils getInstance() {
         if (jumpUtils == null) {
             synchronized (JumpUtils.class) {
@@ -39,6 +47,11 @@ public class JumpUtils {
 
     public void jumpToFragmentTestActivity(Activity activity) {
         Intent intent = new Intent(activity , FragmentTestActivity.class);
+        activity.startActivity(intent);
+    }
+
+    public void jumpToSortAlgorithmActivity(Activity activity) {
+        Intent intent = new Intent(activity, SortAlgorithmActivity.class);
         activity.startActivity(intent);
     }
 }
