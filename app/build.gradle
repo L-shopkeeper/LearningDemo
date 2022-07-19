@@ -39,4 +39,6 @@ dependencies {
 
     //使用fragmentContainView
     implementation "androidx.fragment:fragment:1.4.0"
+    //看OKHttp源码
+    implementation "com.squareup.okhttp3:okhttp:3.10.0"
 }

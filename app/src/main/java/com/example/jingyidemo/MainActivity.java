@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView handlerTestTv;
     private TextView fragmentTestTv;
     private TextView sortAlgorithmTv;
+    private TextView okhttpTestTv;
 
 
     @Override
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         handlerTestTv = findViewById(R.id.handler_test_activity_jump_tv);
         fragmentTestTv = findViewById(R.id.fragment_test_activity_jump_tv);
         sortAlgorithmTv = findViewById(R.id.sort_algorithm_activity_jump_tv);
+        okhttpTestTv = findViewById(R.id.okhttp_test_activity_jump_tv);
     }
 
     private void initListener() {
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         handlerTestTv.setOnClickListener(this);
         fragmentTestTv.setOnClickListener(this);
         sortAlgorithmTv.setOnClickListener(this);
+        okhttpTestTv.setOnClickListener(this);
     }
 
     @Override
@@ -52,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             JumpUtils.getInstance().jumpToFragmentTestActivity(this);
         } else if (view == sortAlgorithmTv) {
             JumpUtils.getInstance().jumpToSortAlgorithmActivity(this);
+        } else if (view == okhttpTestTv) {
+            JumpUtils.getInstance().jumpToOKHttpTestActivity(this);
         }
     }
 }

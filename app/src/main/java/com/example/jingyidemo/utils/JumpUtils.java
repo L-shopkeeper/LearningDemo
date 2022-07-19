@@ -7,6 +7,7 @@ import com.example.jingyidemo.MainActivity;
 import com.example.jingyidemo.datastructure.DataStructureTestActivity;
 import com.example.jingyidemo.fragmenttest.FragmentTestActivity;
 import com.example.jingyidemo.handlertest.HandlerTestActivity;
+import com.example.jingyidemo.okhttptest.OkhttpTestActivity;
 import com.example.jingyidemo.sortalgorithm.SortAlgorithmActivity;
 
 /**
@@ -52,6 +53,11 @@ public class JumpUtils {
 
     public void jumpToSortAlgorithmActivity(Activity activity) {
         Intent intent = new Intent(activity, SortAlgorithmActivity.class);
+        activity.startActivity(intent);
+    }
+
+    public void jumpToOKHttpTestActivity(MainActivity activity) {
+        Intent intent = new Intent(activity, OkhttpTestActivity.class);
         activity.startActivity(intent);
     }
 }

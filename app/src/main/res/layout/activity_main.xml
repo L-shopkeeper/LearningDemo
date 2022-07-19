@@ -64,4 +64,17 @@
         android:background="@color/purple_200"
         app:layout_constraintTop_toBottomOf="@id/data_structure_activity_jump_tv"
         app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/okhttp_test_activity_jump_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="OKHttp测试"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/purple_200"
+        app:layout_constraintTop_toBottomOf="@id/data_structure_activity_jump_tv"
+        app:layout_constraintLeft_toRightOf="@id/sort_algorithm_activity_jump_tv" />
 </androidx.constraintlayout.widget.ConstraintLayout>

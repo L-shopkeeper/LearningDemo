@@ -1,0 +1,107 @@
+1. OSI七层模型， TCP/IP模型， HTTP格式
+    TCP/IP参考模型
+    应用层 -》HTTP HTTPS
+    传输层 -》 Socket
+
+    HTTP  get (请求行，请求属性集) post (请求行，请求属性集，type,length == 请求体)
+
+--- OKHttp
+
+    /**
+       * Prepares the {@code request} to be executed at some point in the future.
+       */
+      @Override public Call newCall(Request request) {
+        return RealCall.newRealCall(this, request, false /* for web socket */);
+      }
+
+
+  @Override public void enqueue(Callback responseCallback) {
+    synchronized (this) {
+        //不能执行大于一次
+      if (executed) throw new IllegalStateException("Already Executed");
+      executed = true;
+    }
+    captureCallStackTrace();
+    eventListener.callStart(this);
+    //核心方法：拿到调度器。
+    client.dispatcher().enqueue(new AsyncCall(responseCallback));
+  }
+
+    //同时运行的异步任务小于64 && 同时对一个服务器的访问不能超过5个
+  synchronized void enqueue(AsyncCall call) {
+      if (runningAsyncCalls.size() < maxRequests && runningCallsForHost(call) < maxRequestsPerHost) {
+        //加入运行队列中，然后执行
+        runningAsyncCalls.add(call);
+        executorService().execute(call);
+      } else {
+        //加入到等待队列
+        readyAsyncCalls.add(call);
+      }
+  }
+
+    //等待执行队列
+    /** Ready async calls in the order they'll be run. */
+    private final Deque<AsyncCall> readyAsyncCalls = new ArrayDeque<>();
+
+    //正在运行队列
+    /** Running asynchronous calls. Includes canceled calls that haven't finished yet. */
+    private final Deque<AsyncCall> runningAsyncCalls = new ArrayDeque<>();
+
+    Deque 双端队列
+
+    final class AsyncCall extends NamedRunnable {
+        private final Callback responseCallback;
+
+        AsyncCall(Callback responseCallback) {
+          super("OkHttp %s", redactedUrl());
+          this.responseCallback = responseCallback;
+        }
+
+        String host() {
+          return originalRequest.url().host();
+        }
+
+        Request request() {
+          return originalRequest;
+        }
+
+        RealCall get() {
+          return RealCall.this;
+        }
+
+        @Override protected void execute() {
+          //signalledCallback 为 true 这个错误是用户造成的，和OKHTTP没关系
+          //signalledCallback 为 false 这个错误是OKHTTP造成的，回调onFailure
+          boolean signalledCallback = false;
+          try {
+            Response response = getResponseWithInterceptorChain();
+            if (retryAndFollowUpInterceptor.isCanceled()) {
+              signalledCallback = true;
+              responseCallback.onFailure(RealCall.this, new IOException("Canceled"));
+            } else {
+              signalledCallback = true;
+              responseCallback.onResponse(RealCall.this, response);
+            }
+          } catch (IOException e) {
+            if (signalledCallback) {
+              // Do not signal the callback twice!
+              Platform.get().log(INFO, "Callback failure for " + toLoggableString(), e);
+            } else {
+              eventListener.callFailed(RealCall.this, e);
+              responseCallback.onFailure(RealCall.this, e);
+            }
+          } finally {
+            client.dispatcher().finished(this);
+          }
+        }
+      }
+----------
+executorService().execute(call);
+
+public synchronized ExecutorService executorService() {
+    if (executorService == null) {
+      executorService = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS,
+          new SynchronousQueue<Runnable>(), Util.threadFactory("OkHttp Dispatcher", false));
+    }
+    return executorService;
+  }
