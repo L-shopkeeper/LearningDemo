@@ -1,4 +1,4 @@
-package com.example.jingyidemo.sortalgorithm;
+ package com.example.jingyidemo.sortalgorithm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,8 +34,12 @@ public class SortAlgorithmActivity extends AppCompatActivity implements View.OnC
 //        Log.d(MainActivity.LOG_TAG, "冒泡排序后的数组为：" + Arrays.toString(arr));
 
         //快速排序
-        quickSort(arr, 0, arr.length-1);
-        Log.d(MainActivity.LOG_TAG, "快速排序后的数组为：" + Arrays.toString(arr));
+//        quickSort(arr, 0, arr.length-1);
+//        Log.d(MainActivity.LOG_TAG, "快速排序后的数组为：" + Arrays.toString(arr));
+
+        //插入排序
+        insertSort(arr);
+        Log.d(MainActivity.LOG_TAG, "插入排序后的数组为：" + Arrays.toString(arr));
     }
 
     private void findViews() {
@@ -139,6 +143,31 @@ public class SortAlgorithmActivity extends AppCompatActivity implements View.OnC
             arr[low] = standard;
             quickSort(arr, start, low);
             quickSort(arr, low + 1, end);
+        }
+    }
+
+    /**
+     * 直接插入排序
+     *
+     *  
+     *
+     * 时间复杂度O(n)*O(n)=O(n2)
+     */
+    private void insertSort(int[] arr) {
+        //遍历所有的数字
+        for (int i = 1; i < arr.length; i++) {
+            //如果当前数字比前一个数字小
+            if (arr[i] < arr[i - 1]) {
+                //把当前遍历数字存起来
+                int temp = arr[i];
+                int j;
+                for (j = i - 1; j >= 0 && temp < arr[j]; j--) {
+                    //把前一个数字赋给后一个数字
+                    arr[j + 1] = arr[j];
+                }
+                //直到有temp>arr[j],把临时变量（外层for循环的当前元素）赋给不满足条件的后一个元素
+                arr[j + 1] = temp;
+            }
         }
     }
 }

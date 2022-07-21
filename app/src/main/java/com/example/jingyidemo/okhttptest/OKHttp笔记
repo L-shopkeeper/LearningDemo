@@ -105,3 +105,24 @@ public synchronized ExecutorService executorService() {
     }
     return executorService;
   }
+
+责任链模式
+Response getResponseWithInterceptorChain() throws IOException {
+    // Build a full stack of interceptors.
+    List<Interceptor> interceptors = new ArrayList<>();
+    interceptors.addAll(client.interceptors());//用户自定义的
+    interceptors.add(retryAndFollowUpInterceptor);
+    interceptors.add(new BridgeInterceptor(client.cookieJar()));
+    interceptors.add(new CacheInterceptor(client.internalCache()));
+    interceptors.add(new ConnectInterceptor(client));
+    if (!forWebSocket) {
+      interceptors.addAll(client.networkInterceptors());
+    }
+    interceptors.add(new CallServerInterceptor(forWebSocket));
+
+    Interceptor.Chain chain = new RealInterceptorChain(interceptors, null, null, null, 0,
+        originalRequest, this, eventListener, client.connectTimeoutMillis(),
+        client.readTimeoutMillis(), client.writeTimeoutMillis());
+
+    return chain.proceed(originalRequest);
+  }

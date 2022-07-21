@@ -58,7 +58,7 @@ public class OkhttpTestActivity extends AppCompatActivity implements View.OnClic
     private void okhttpUseAction() {
         //五个类OKhttpClient request Call response Callback
 
-        OkHttpClient client = new OkHttpClient.Builder().build();
+        OkHttpClient client = new OkHttpClient.Builder().dispatcher(null).addInterceptor(null).build();
 
         Request request = new Request.Builder().url("https://www.baidu.com").get().build();
 
