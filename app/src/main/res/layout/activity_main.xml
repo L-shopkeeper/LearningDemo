@@ -77,4 +77,29 @@
         android:background="@color/purple_200"
         app:layout_constraintTop_toBottomOf="@id/data_structure_activity_jump_tv"
         app:layout_constraintLeft_toRightOf="@id/sort_algorithm_activity_jump_tv" />
+
+    <TextView
+        android:id="@+id/broadcast_test_activity_jump_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="broadcast测试"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/purple_200"
+        app:layout_constraintTop_toBottomOf="@id/data_structure_activity_jump_tv"
+        app:layout_constraintLeft_toRightOf="@id/okhttp_test_activity_jump_tv" />
+
+    <TextView
+        android:id="@+id/service_test_activity_jump_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="service测试"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/purple_200"
+        app:layout_constraintTop_toBottomOf="@id/sort_algorithm_activity_jump_tv"
+        app:layout_constraintLeft_toLeftOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

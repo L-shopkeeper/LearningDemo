@@ -37,9 +37,17 @@ public class SortAlgorithmActivity extends AppCompatActivity implements View.OnC
 //        quickSort(arr, 0, arr.length-1);
 //        Log.d(MainActivity.LOG_TAG, "快速排序后的数组为：" + Arrays.toString(arr));
 
-        //插入排序
-        insertSort(arr);
-        Log.d(MainActivity.LOG_TAG, "插入排序后的数组为：" + Arrays.toString(arr));
+        //直接插入排序
+//        insertSort(arr);
+//        Log.d(MainActivity.LOG_TAG, "插入排序后的数组为：" + Arrays.toString(arr));
+
+        //希尔排序
+//        shellSort(arr);
+//        Log.d(MainActivity.LOG_TAG, "希尔排序后的数组为：" + Arrays.toString(arr));
+
+        //选择排序
+        selectSort(arr);
+        Log.d(MainActivity.LOG_TAG, "选择排序后的数组为：" + Arrays.toString(arr));
     }
 
     private void findViews() {
@@ -169,5 +177,71 @@ public class SortAlgorithmActivity extends AppCompatActivity implements View.OnC
                 arr[j + 1] = temp;
             }
         }
+    }
+
+    /**
+     * 希尔排序
+     * 1.先分组，组内排序
+     * 2.缩小步长到1
+     *
+     *  三层for循环+if
+     *
+     *  时间复杂度依赖于步长的设计，不超过O(n2)
+     */
+    private void shellSort(int[] arr) {
+        //遍历所有步长
+        for (int d = arr.length / 2; d > 0; d = d / 2) {
+            //遍历所有元素,i从步长开始，并不是从头开始
+            //
+            for (int i = d; i < arr.length; i++) {
+                //遍历本组中所有的元素
+                for (int j = i - d; j >= 0; j -= d) {
+                    //如果当前元素大于加上步长后的那个元素
+                    if (arr[j] > arr[j + d]) {
+                        int temp = arr[j];
+                        arr[j] = arr[j + d];
+                        arr[j + d] = temp;
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * 选择排序
+     *
+     * 每轮都是把最小的挑出来放到最前面
+     *
+     * 时间复杂度为O(n2)
+     *
+     */
+    private void selectSort(int[] arr) {
+        //遍历所有的数
+        for(int i=0;i<arr.length;i++) {
+            int minIndex = i;
+            //把当前遍历的数和后面所有的数依次进行比较，并记录下最小的数的下标
+            for (int j=i+1;j<arr.length;j++) {
+                //如果后面比较的数比记录的最小的数小
+                if(arr[minIndex] > arr[j]) {
+                    //记录下最小的那个数的下标
+                    minIndex = j;
+                }
+                //如果最小的数和当前遍历数的下标不一致，说明下标为minIndex的数比当前遍历的数更小
+                //交换位置
+                if(i!=minIndex){
+                    int temp =arr[i];
+                    arr[i] = arr[minIndex];
+                    arr[minIndex] = temp;
+                }
+
+
+            }
+
+
+
+        }
+
+
+
     }
 }
