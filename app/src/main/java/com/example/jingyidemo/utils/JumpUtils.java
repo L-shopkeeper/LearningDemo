@@ -7,6 +7,7 @@ import com.example.jingyidemo.MainActivity;
 import com.example.jingyidemo.broadcasttest.BroadcastTestActivity;
 import com.example.jingyidemo.datastructure.DataStructureTestActivity;
 import com.example.jingyidemo.fragmenttest.FragmentTestActivity;
+import com.example.jingyidemo.glidetest.GlideTestActivity;
 import com.example.jingyidemo.handlertest.HandlerTestActivity;
 import com.example.jingyidemo.okhttptest.OkhttpTestActivity;
 import com.example.jingyidemo.servicetest.ServiceTestActivity;
@@ -70,6 +71,11 @@ public class JumpUtils {
 
     public void jumpToServiceTestActivity(Activity activity){
         Intent intent = new Intent(activity, ServiceTestActivity.class);
+        activity.startActivity(intent);
+    }
+
+    public void jumpToGlideTestActivity(Activity activity){
+        Intent intent = new Intent(activity, GlideTestActivity.class);
         activity.startActivity(intent);
     }
 }

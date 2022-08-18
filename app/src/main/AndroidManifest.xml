@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JingyiDemo">
-        <activity android:name=".servicetest.ServiceTestActivity"></activity>
+        <activity android:name=".glidetest.GlideTestActivity"></activity>
+        <activity android:name=".servicetest.ServiceTestActivity" />
 
         <service
             android:name=".servicetest.MyService"

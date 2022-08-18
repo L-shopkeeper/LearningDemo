@@ -1,6 +1,7 @@
 package com.example.jingyidemo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView okhttpTestTv;
     private TextView broadcastTestTv;
     private TextView serviceTestTv;
-
+    private TextView glideTestTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         okhttpTestTv = findViewById(R.id.okhttp_test_activity_jump_tv);
         broadcastTestTv = findViewById(R.id.broadcast_test_activity_jump_tv);
         serviceTestTv = findViewById(R.id.service_test_activity_jump_tv);
+        glideTestTv = findViewById(R.id.glide_test_activity_jump_tv);
     }
 
     private void initListener() {
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sortAlgorithmTv.setOnClickListener(this);
         okhttpTestTv.setOnClickListener(this);
         broadcastTestTv.setOnClickListener(this);
+        glideTestTv.setOnClickListener(this);
     }
 
     @Override
@@ -66,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             JumpUtils.getInstance().jumpToBroadcastTestActivity(this);
         } else if (view == serviceTestTv) {
             JumpUtils.getInstance().jumpToServiceTestActivity(this);
+        } else if (view == glideTestTv) {
+            JumpUtils.getInstance().jumpToGlideTestActivity(this);
         }
     }
 }
