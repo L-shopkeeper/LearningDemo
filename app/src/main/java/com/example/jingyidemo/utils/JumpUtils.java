@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import com.example.jingyidemo.MainActivity;
 import com.example.jingyidemo.broadcasttest.BroadcastTestActivity;
+import com.example.jingyidemo.customview.CustomViewActivity;
 import com.example.jingyidemo.datastructure.DataStructureTestActivity;
 import com.example.jingyidemo.fragmenttest.FragmentTestActivity;
 import com.example.jingyidemo.glidetest.GlideTestActivity;
@@ -78,4 +79,11 @@ public class JumpUtils {
         Intent intent = new Intent(activity, GlideTestActivity.class);
         activity.startActivity(intent);
     }
+
+    public void jumpToCustomViewActivity(Activity activity){
+        Intent intent = new Intent(activity, CustomViewActivity.class);
+        activity.startActivity(intent);
+    }
+
+
 }

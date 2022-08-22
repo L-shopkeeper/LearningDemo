@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView broadcastTestTv;
     private TextView serviceTestTv;
     private TextView glideTestTv;
+    private TextView customView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         broadcastTestTv = findViewById(R.id.broadcast_test_activity_jump_tv);
         serviceTestTv = findViewById(R.id.service_test_activity_jump_tv);
         glideTestTv = findViewById(R.id.glide_test_activity_jump_tv);
+        customView = findViewById(R.id.custom_view_activity_jump_tv);
     }
 
     private void initListener() {
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         okhttpTestTv.setOnClickListener(this);
         broadcastTestTv.setOnClickListener(this);
         glideTestTv.setOnClickListener(this);
+        customView.setOnClickListener(this);
     }
 
     @Override
@@ -71,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             JumpUtils.getInstance().jumpToServiceTestActivity(this);
         } else if (view == glideTestTv) {
             JumpUtils.getInstance().jumpToGlideTestActivity(this);
+        } else if (view == customView) {
+            JumpUtils.getInstance().jumpToCustomViewActivity(this);
         }
     }
 }
